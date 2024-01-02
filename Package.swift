@@ -21,5 +21,8 @@ let package = Package(
         .target(
             name: "YouTubePlayer",
             dependencies: []),
+        .testTarget(
+            name: "YouTubePlayerTests",
+            dependencies: ["YouTubePlayer"]),
     ]
 )
