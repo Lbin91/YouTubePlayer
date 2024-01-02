@@ -255,7 +255,7 @@ open class YouTubePlayerView: UIView, WKNavigationDelegate {
     }
 
     fileprivate func playerHTMLPath() -> String {
-        let bundle = Bundle(for: YouTubePlayerView.self)
+        let bundle = Bundle.module
         if let htmlPath = bundle.path(forResource: "YTPlayer", ofType: "html") {
             return htmlPath
         }
