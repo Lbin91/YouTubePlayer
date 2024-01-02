@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "YouTubePlayer",
             resources: [
-                .process("YTPlayer.html")
+                .process("Resources")
             ],
             dependencies: []),
         .testTarget(
