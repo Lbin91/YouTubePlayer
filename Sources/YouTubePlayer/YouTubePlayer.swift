@@ -256,8 +256,17 @@ open class YouTubePlayerView: UIView, WKNavigationDelegate {
 
     fileprivate func playerHTMLPath() -> String {
         let bundle = Bundle(for: YouTubePlayerView.self)
-        let htmlPath = bundle.path(forResource: "YTPlayer", ofType: "html")
-        return htmlPath ?? ""
+        if let htmlPath = bundle.path(forResource: "YTPlayer", ofType: "html") {
+            return htmlPath
+        }
+        
+        let currentFileURL = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("YTPlayer.html")
+        // 파일이 실제로 존재하는지 확인합니다.
+        if FileManager.default.fileExists(atPath: currentFileURL.path) {
+            return currentFileURL.path
+        }
+        
+        return ""
     }
 
     fileprivate func htmlStringWithFilePath(_ path: String) -> String? {
